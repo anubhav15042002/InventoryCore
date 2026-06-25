@@ -6,11 +6,13 @@ Built with FastAPI, React, PostgreSQL, Docker, and Docker Compose.
 
 ## Live Links
 
+## Live Links
+
 | Service | URL |
 | --- | --- |
-| Frontend | Coming soon |
-| Backend API Docs | Coming soon |
-| Docker Image | Coming soon |
+| Frontend | https://coreinventory-nu.vercel.app |
+| Backend API Docs | https://inventory-order-management-fvs6.onrender.com/docs |
+| Docker Image | https://hub.docker.com/r/anubhav1504/inventorycore-api |
 
 ## Overview
 
