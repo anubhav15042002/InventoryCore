@@ -6,8 +6,6 @@ Built with FastAPI, React, PostgreSQL, Docker, and Docker Compose.
 
 ## Live Links
 
-## Live Links
-
 | Service | URL |
 | --- | --- |
 | Frontend | https://coreinventory-nu.vercel.app |
