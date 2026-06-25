@@ -1,193 +1,196 @@
-# StockFlow – Inventory & Order Management System
+# InventoryCore - Inventory & Order Management System
 
-<p align="center">
-  <b>Full Stack Inventory & Order Management Platform</b><br/>
-  Built with FastAPI, React, PostgreSQL, Docker & Modern DevOps Practices
-</p>
+InventoryCore is a full-stack inventory and order management platform for managing products, customers, orders, and stock movement from a responsive operations dashboard.
 
----
+Built with FastAPI, React, PostgreSQL, Docker, and Docker Compose.
 
-## Live Demo
+## Live Links
 
-### Frontend
-
-🔗 https://inventory-order-management-zeta.vercel.app/
-
-### API Documentation
-
-🔗 https://inventory-order-management-fvs6.onrender.com/docs
-
-### Docker Image
-
-🔗 https://hub.docker.com/r/63982355/inventory-order-api
-
----
+| Service | URL |
+| --- | --- |
+| Frontend | Coming soon |
+| Backend API Docs | Coming soon |
+| Docker Image | Coming soon |
 
 ## Overview
 
-StockFlow is a modern inventory and order management system designed for businesses to manage products, customers, orders, and inventory transactions efficiently.
-
-The platform ensures inventory consistency using transactional database operations and provides a clean operational dashboard for tracking stock movement and order activity.
-
----
+InventoryCore helps businesses maintain product catalogues, track customer orders, validate stock availability, and record inventory transactions. The backend protects inventory consistency by validating stock before order creation and reducing product quantity automatically when orders are placed.
 
 ## Features
 
 ### Product Management
 
-* Create, update and delete products
-* SKU-based inventory tracking
-* Real-time stock management
-* Low-stock monitoring
+- Create, update, view, and delete products
+- Unique SKU/code validation
+- Product price and stock tracking
+- Manual stock adjustment
+- Low-stock visibility
 
 ### Customer Management
 
-* Customer CRUD operations
-* Unique email validation
-* Customer order history support
+- Create, update, view, and delete customers
+- Unique customer email validation
+- Customer contact and address storage
+- Protection against deleting customers with existing orders
 
-### Order Processing
+### Order Management
 
-* Multi-item order creation
-* Automatic order total calculation
-* Order status management
-* Order cancellation support
+- Create customer orders with multiple products
+- Backend-calculated order totals
+- Inventory validation before order placement
+- Automatic stock reduction after successful order creation
+- Order status updates
+- Stock restoration when an order is cancelled
 
 ### Inventory Tracking
 
-* Inventory audit logs
-* Automatic stock deduction
-* Stock restoration on cancellation
-* Inventory movement history
+- Inventory transaction history
+- Manual adjustment logs
+- Order placement logs
+- Order cancellation logs
+- Audit-friendly stock movement records
 
 ### Developer Features
 
-* FastAPI Swagger Documentation
-* Alembic Migrations
-* Dockerized Development Setup
-* Automated Testing
-* CI/CD Ready Architecture
-
----
+- FastAPI Swagger documentation
+- SQLAlchemy ORM models
+- Pydantic request/response validation
+- Alembic database migrations
+- Pytest test suite
+- Dockerized local development
 
 ## Tech Stack
 
 ### Backend
 
-* FastAPI
-* SQLAlchemy
-* PostgreSQL
-* Alembic
-* Pydantic
-* Pytest
+- Python
+- FastAPI
+- SQLAlchemy
+- PostgreSQL
+- Alembic
+- Pydantic
+- Pytest
 
 ### Frontend
 
-* React
-* TypeScript
-* Vite
+- React
+- TypeScript
+- Vite
+- TanStack Query
+- React Router
 
-### DevOps & Deployment
+### DevOps and Deployment
 
-* Docker
-* Docker Compose
-* GitHub Actions
-* Neon PostgreSQL
-* Render
-* Vercel
-
----
+- Docker
+- Docker Compose
+- Render
+- Vercel
+- Neon PostgreSQL
+- Docker Hub
 
 ## Project Structure
 
 ```text
 inventory-order-management/
-│
-├── backend/
-│   ├── alembic/
-│   ├── app/
-│   │   ├── api/
-│   │   ├── models/
-│   │   ├── schemas/
-│   │   ├── services/
-│   │   └── core/
-│   ├── tests/
-│   └── scripts/
-│
-├── frontend/
-│   └── src/
-│       ├── components/
-│       ├── pages/
-│       ├── api/
-│       └── types/
-│
-├── docker-compose.yml
-├── render.yaml
-└── .env.example
+  backend/
+    alembic/
+    app/
+      api/
+      core/
+      db/
+      models/
+      schemas/
+      services/
+    scripts/
+    tests/
+    Dockerfile
+    pyproject.toml
+
+  frontend/
+    src/
+      api/
+      components/
+      pages/
+      types/
+    Dockerfile
+    package.json
+    vite.config.ts
+
+  docker-compose.yml
+  render.yaml
+  .env.example
 ```
 
----
-
-##  System Architecture
+## System Architecture
 
 ```text
 Customers
-    │
-    ▼
- Orders
-    │
-    ▼
+  |
+  v
+Orders
+  |
+  v
 Order Items
-    │
-    ▼
- Products
-    │
-    ▼
+  |
+  v
+Products
+  |
+  v
 Inventory Transactions
 ```
 
----
+## Local Setup
 
-##  Local Setup
-
-### Clone Repository
+### 1. Clone Repository
 
 ```bash
-git clone https://github.com/AbhayRastogi11/inventory-order-management.git
-
-cd inventory-order-management
+git clone https://github.com/anubhav15042002/InventoryCore.git
+cd InventoryCore
 ```
 
-### Configure Environment Variables
+### 2. Configure Environment Variables
 
 ```bash
 cp .env.example .env
 ```
 
-### Start Application
+For Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Default local values:
+
+```env
+POSTGRES_DB=inventory_db
+POSTGRES_USER=inventory_user
+POSTGRES_PASSWORD=change_me
+DATABASE_URL=postgresql+psycopg://inventory_user:change_me@db:5432/inventory_db
+BACKEND_CORS_ORIGINS=http://localhost:5173
+VITE_API_BASE_URL=http://localhost:8000/api/v1
+```
+
+### 3. Start Application
 
 ```bash
 docker compose up --build
 ```
 
-### Seed Demo Data
+### 4. Seed Demo Data
 
 ```bash
 docker compose exec backend python -m scripts.seed
 ```
 
----
+## Local URLs
 
-##  Local URLs
-
-| Service      | URL                          |
-| ------------ | ---------------------------- |
-| Frontend     | http://localhost:5173        |
-| Backend      | http://localhost:8000        |
-| API Docs     | http://localhost:8000/docs   |
+| Service | URL |
+| --- | --- |
+| Frontend | http://localhost:5173 |
+| Backend | http://localhost:8000 |
+| API Docs | http://localhost:8000/docs |
 | Health Check | http://localhost:8000/health |
-
----
 
 ## Run Tests
 
@@ -195,74 +198,110 @@ docker compose exec backend python -m scripts.seed
 docker compose run --rm backend pytest
 ```
 
----
+## API Overview
 
-## Inventory Consistency
+Base path:
 
-Order placement is handled inside a single PostgreSQL transaction.
-
-The backend uses:
-
-* Row-level locking (`SELECT FOR UPDATE`)
-* Atomic stock updates
-* Transaction rollback on failure
-* Inventory audit logging
-
-This prevents:
-
-* Overselling
-* Race conditions
-* Inventory corruption
-* Concurrent stock conflicts
-
----
-
-##  Application Screenshots
-
-### Dashboard
-
-![Dashboard](./docs/images/dashboard.png)
-
-### Products
-
-![Products](./docs/images/products.png)
-
-### Inventory Log
-
-![Inventory Log](./docs/images/inventory-log.png)
-
----
-
-## 🐳 Docker Image
-
-Pull the latest backend image:
-
-```bash
-docker pull 63982355/inventory-order-api
+```text
+/api/v1
 ```
 
----
+Main endpoints:
+
+```text
+GET    /dashboard/summary
+
+POST   /products
+GET    /products
+GET    /products/{id}
+PUT    /products/{id}
+PATCH  /products/{id}/stock
+DELETE /products/{id}
+
+POST   /customers
+GET    /customers
+GET    /customers/{id}
+PUT    /customers/{id}
+DELETE /customers/{id}
+
+POST   /orders
+GET    /orders
+GET    /orders/{id}
+PATCH  /orders/{id}/status
+
+GET    /inventory-transactions
+```
+
+## Business Rules
+
+- Product SKU/code must be unique.
+- Customer email must be unique.
+- Product quantity cannot be negative.
+- Orders cannot be placed if inventory is insufficient.
+- Creating an order automatically reduces available stock.
+- Total order amount is calculated by the backend.
+- Cancelling an order restores stock.
+- Products and customers referenced by existing orders cannot be deleted.
+
+## Docker
+
+The application is containerized with Docker Compose.
+
+Services:
+
+- `frontend`: React application
+- `backend`: FastAPI API
+- `db`: PostgreSQL database
+
+Start all services:
+
+```bash
+docker compose up --build
+```
+
+Stop all services:
+
+```bash
+docker compose down
+```
 
 ## Deployment
 
 ### Frontend
 
-Hosted on Vercel
+Deploy the `frontend` folder on Vercel.
+
+Environment variable:
+
+```env
+VITE_API_BASE_URL=https://your-backend-url.onrender.com/api/v1
+```
 
 ### Backend
 
-Hosted on Render
+Deploy the `backend` folder on Render.
+
+Environment variables:
+
+```env
+DATABASE_URL=postgresql+psycopg://USER:PASSWORD@HOST/DB_NAME?sslmode=require
+BACKEND_CORS_ORIGINS=https://your-frontend-url.vercel.app
+```
 
 ### Database
 
-Hosted on Neon PostgreSQL
+Use a hosted PostgreSQL database such as Neon.
 
----
+## Docker Image
 
-## Author
+Build backend image:
 
-### Abhay Rastogi
+```bash
+docker build -t inventorycore-api ./backend
+```
 
-GitHub:
-https://github.com/AbhayRastogi11
+After publishing to Docker Hub, update the Docker image link in the Live Links section.
 
+## Notes
+
+A `409 Conflict` response while deleting a product or customer can be expected if that record is already referenced by an order. This protects historical order records and database integrity.
